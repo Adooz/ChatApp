@@ -1,11 +1,16 @@
+""" Defines the main file for the FastAPI server. """
+from typing import Union
+import os
+from dotenv import load_dotenv
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-# pip install "uvicorn[standard]"
-
 from pydantic import BaseModel
-from typing import Union
+
 
 import requests
+
+load_dotenv()
 
 app = FastAPI()
 app.add_middleware(
@@ -16,30 +21,56 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-PROJECT_ID = "be4c21d0-d952-4ba8-a9bf-0aacd0cabfc0"
-PRIVATE_KEY = "2e48b749-57c8-4471-9dbb-eb7436c27398"
+PROJECT_ID = os.getenv("PROJECT_ID")
+PRIVATE_KEY = os.getenv("PRIVATE_KEY")
+
 
 class User(BaseModel):
+    """ Defines a user object. """
     username: str
     secret: str
     email: Union[str, None] = None
     first_name: Union[str, None] = None
     last_name: Union[str, None] = None
 
-@app.post('/login/')
-async def root(user: User):
-    response = requests.get('https://api.chatengine.io/users/me/', 
-        headers={ 
-            "Project-ID": PROJECT_ID,
+
+@app.post("/login/")
+async def login_user(user: User) -> dict:
+    """
+    Defines a route for logging in a user.
+
+    Args:
+        user (User): A user object with username and secret.
+
+    Returns:
+        dict: A dictionary with the user's information.
+    """
+    response = requests.get(
+        "https://api.chatengine.io/users/me/",
+        headers={
+            "Project-ID": PROJECT_ID or bytes(),
             "User-Name": user.username,
-            "User-Secret": user.secret
-        }
+            "User-Secret": user.secret,
+        },
+        timeout=5,
     )
     return response.json()
 
-@app.post('/signup/')
-async def root(user: User):
-    response = requests.post('https://api.chatengine.io/users/', 
+
+@app.post("/signup/")
+async def signup_user(user: User) -> dict:
+    """
+    Defines a route for signing up a user.
+
+    Args:
+        user (User): A user object with username, secret, email, first_name,
+            and last_name.
+
+    Returns:
+        dict: A dictionary with the user's information.
+    """
+    response = requests.post(
+        "https://api.chatengine.io/users/",
         data={
             "username": user.username,
             "secret": user.secret,
@@ -47,12 +78,10 @@ async def root(user: User):
             "first_name": user.first_name,
             "last_name": user.last_name,
         },
-        headers={ "Private-Key": PRIVATE_KEY }
+        headers={"Private-Key": PRIVATE_KEY or bytes()},
+        timeout=5,
     )
     return response.json()
 
-# python3 -m venv venv
-# source venv/bin/activate
-# pip install --upgrade pip
-# pip install -r requirements.txt
+
 # uvicorn main:app --reload --port 3001
