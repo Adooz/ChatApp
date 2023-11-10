@@ -1,3 +1,4 @@
+""" Defines the main file for the FastAPI server. """
 from typing import Union
 import os
 from dotenv import load_dotenv
@@ -25,6 +26,7 @@ PRIVATE_KEY = os.getenv("PRIVATE_KEY")
 
 
 class User(BaseModel):
+    """ Defines a user object. """
     username: str
     secret: str
     email: Union[str, None] = None
@@ -33,11 +35,20 @@ class User(BaseModel):
 
 
 @app.post("/login/")
-async def login_user(user: User):
+async def login_user(user: User) -> dict:
+    """
+    Defines a route for logging in a user.
+
+    Args:
+        user (User): A user object with username and secret.
+
+    Returns:
+        dict: A dictionary with the user's information.
+    """
     response = requests.get(
         "https://api.chatengine.io/users/me/",
         headers={
-            "Project-ID": PROJECT_ID,
+            "Project-ID": PROJECT_ID or bytes(),
             "User-Name": user.username,
             "User-Secret": user.secret,
         },
@@ -47,7 +58,17 @@ async def login_user(user: User):
 
 
 @app.post("/signup/")
-async def signup_user(user: User):
+async def signup_user(user: User) -> dict:
+    """
+    Defines a route for signing up a user.
+
+    Args:
+        user (User): A user object with username, secret, email, first_name,
+            and last_name.
+
+    Returns:
+        dict: A dictionary with the user's information.
+    """
     response = requests.post(
         "https://api.chatengine.io/users/",
         data={
@@ -57,7 +78,7 @@ async def signup_user(user: User):
             "first_name": user.first_name,
             "last_name": user.last_name,
         },
-        headers={"Private-Key": PRIVATE_KEY},
+        headers={"Private-Key": PRIVATE_KEY or bytes()},
         timeout=5,
     )
     return response.json()
