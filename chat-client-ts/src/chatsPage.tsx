@@ -1,11 +1,12 @@
 import { PrettyChatWindow } from 'react-chat-engine-pretty';
+import { ChatsPageProps } from './Interfaces';
 
 
-const ChatsPage = (props) => {
+const ChatsPage: React.FC<ChatsPageProps> = (props) => {
 	return (
 		<div style={{ height: "100vh", width: "100vw" }} >
 			<PrettyChatWindow
-				projectId={process.env.REACT_APP_CHAT_ENGINE_PROJECT_ID}
+				projectId={process.env.PROJECT_ID as string}
 				username={props.username}
 				secret={props.secret}
 			/>

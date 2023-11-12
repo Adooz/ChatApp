@@ -1,20 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 
-import { User } from "./Interfaces";
+const AuthPage = (props) => {
+  const [username, setUsername] = useState();
+  const [secret, setSecret] = useState();
+  const [email, setEmail] = useState();
+  const [first_name, setFirstName] = useState();
+  const [last_name, setLastName] = useState();
 
-interface AuthPageProps {
-  onAuth: (user: User) => void;
-}
-
-const AuthPage: React.FC<AuthPageProps> = (props) => {
-  const [username, setUsername] = useState<string>("");
-  const [secret, setSecret] = useState<string>("");
-  const [email, setEmail] = useState<string | undefined>();
-  const [first_name, setFirstName] = useState<string | undefined>();
-  const [last_name, setLastName] = useState<string | undefined>();
-
-  const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const onLogin = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/login", { username, secret })
@@ -22,7 +16,7 @@ const AuthPage: React.FC<AuthPageProps> = (props) => {
       .catch((e) => console.log(JSON.stringify(e.response.data)));
   };
 
-  const onSignup = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSignup = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/signup", {
@@ -46,14 +40,12 @@ const AuthPage: React.FC<AuthPageProps> = (props) => {
             type="text"
             name="username"
             placeholder="Username"
-            value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
             type="password"
             name="secret"
             placeholder="Password"
-            value={secret}
             onChange={(e) => setSecret(e.target.value)}
           />
           <button type="submit">LOG IN</button>
