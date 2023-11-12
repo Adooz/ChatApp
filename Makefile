@@ -9,6 +9,6 @@ api:
 
 # Start the client
 client-js:
-	cd ${CLIENT_JS} && yarn dev
+	cd ${CLIENT_JS} && npm run dev
 client-ts:
-	cd ${CLIENT_TS} && yarn dev
+	cd ${CLIENT_TS} && npm run dev
