@@ -8133,6 +8133,20 @@ react-chat-engine-advanced@^0.1.25:
     react-grid-system "^7.3.2"
     react-scroll "^1.8.4"
 
+react-chat-engine-advanced@^0.1.28:
+  version "0.1.28"
+  resolved "https://registry.yarnpkg.com/react-chat-engine-advanced/-/react-chat-engine-advanced-0.1.28.tgz#d922c3d50b2431f6e73b72542d725f2c2eac8773"
+  integrity sha512-1OOgcgHrAQfquOYIiU/CVcMi6cyc4u9KcSlNlC/pm0UJuLJ2iMvJ3+3n7fn2HloWc0JFyV5yiVW0xGLCgbokNg==
+  dependencies:
+    "@ant-design/icons" "^4.7.0"
+    "@types/react-scroll" "^1.8.3"
+    axios "^0.24.0"
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
+    nextjs-websocket "^1.0.8"
+    react-grid-system "^7.3.2"
+    react-scroll "^1.8.4"
+
 react-chat-engine-pretty@^0.1.8:
   version "0.1.8"
   resolved "https://registry.npmjs.org/react-chat-engine-pretty/-/react-chat-engine-pretty-0.1.8.tgz"

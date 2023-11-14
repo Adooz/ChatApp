@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
-import { PrettyChatWindow } from "react-chat-engine-pretty";
+import { ChatEngine } from "react-chat-engine";
 
 const ChatsPage = (props) => {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
-      <PrettyChatWindow
-        projectId={import.meta.env.VITE_CHAT_ENGINE_PROJECT_ID}
-        username={props.user.username}
-        secret={props.user.secret}
+      <ChatEngine
+        projectID={import.meta.env.VITE_CHAT_ENGINE_PROJECT_ID}
+        userName={props.user.username}
+        userSecret={props.user.secret}
         style={{ height: "100%" }}
       />
     </div>

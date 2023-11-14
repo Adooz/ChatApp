@@ -1,16 +1,11 @@
-import { useState } from "react";
-import { User } from "./Interfaces";
+import React, { useState } from "react";
+import "./styles.css";
 import SignInForm from "./SignIn";
 import SignUpForm from "./SignUp";
-import "./styles.css";
 
-interface AuthPageProps {
-  onAuth: (user: User) => void;
-}
-
-const AuthPage: React.FC<AuthPageProps> = (props) => {
+export default function App() {
   const [type, setType] = useState("signIn");
-  const handleOnClick = ( text: string ) => {
+  const handleOnClick = text => {
     if (text !== type) {
       setType(text);
       return;
@@ -18,13 +13,12 @@ const AuthPage: React.FC<AuthPageProps> = (props) => {
   };
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");
-
   return (
     <div className="App">
       <h2>Sign in/up Form</h2>
       <div className={containerClass} id="container">
-        <SignUpForm onAuth={props.onAuth} />
-        <SignInForm onAuth={props.onAuth} />
+        <SignUpForm />
+        <SignInForm />
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
@@ -56,7 +50,4 @@ const AuthPage: React.FC<AuthPageProps> = (props) => {
       </div>
     </div>
   );
-
-};
-
-export default AuthPage;
+}
