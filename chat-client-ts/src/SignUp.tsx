@@ -63,14 +63,14 @@ function SignUpForm(props: SignUpFormProps) {
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="First name"
+          placeholder="Email"
         />
         <input
           type="text"
           name="first_name"
           value={first_name}
           onChange={(e) => setFirstName(e.target.value)}
-          placeholder="Email"
+          placeholder="First name"
         />
         <input
           type="text"
