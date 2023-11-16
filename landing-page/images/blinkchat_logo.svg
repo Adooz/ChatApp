@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 722.25 189.45">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2 {
+        font-family: SourceSansRoman-Bold, 'Source Sans Variable';
+        font-size: 120.13px;
+        font-variation-settings: 'wght' 700;
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        fill: red;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <text class="cls-2" transform="translate(201.83 132.39)"><tspan x="0" y="0">BlinkCh</tspan><tspan class="cls-1" x="413.25" y="0">a</tspan><tspan x="474.4" y="0">t</tspan></text>
+    <g>
+      <polygon class="cls-3" points="49.36 153.7 74.26 100.81 45.18 100.94 105.66 29.48 82.46 82.57 111.54 82.44 49.36 153.7"/>
+      <path class="cls-3" d="m82.07,16.03c26.75,0,50.69,15.96,60.99,40.66,6.79,16.28,6.83,34.24.12,50.55-6.71,16.31-19.38,29.04-35.66,35.83l-60.96,25.42-25.41-60.96c-14.01-33.61,1.93-72.36,35.55-86.38,8.13-3.39,16.66-5.11,25.38-5.11h0M82.07,0c-10.52,0-21.23,2.04-31.55,6.34C8.68,23.78-11.1,71.85,6.34,113.69l31.58,75.76,75.76-31.59c41.84-17.44,61.62-65.5,44.17-107.35C144.72,19,114.21,0,82.07,0h0Z"/>
+    </g>
+  </g>
+</svg>
