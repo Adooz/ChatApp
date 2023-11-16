@@ -25,7 +25,7 @@ function SignInForm(props: SignInFormProps) {
     <div className="form-container sign-in-container">
       <form onSubmit={handleOnLogin}>
         <h1>Sign in</h1>
-        <div className="social-container">
+        {/* <div className="social-container">
           <a href="#" className="social">
             <i className="fab fa-facebook-f" />
           </a>
@@ -36,7 +36,7 @@ function SignInForm(props: SignInFormProps) {
             <i className="fab fa-linkedin-in" />
           </a>
         </div>
-        <span>or use your account</span>
+        <span>or use your account</span> */}
         <input
             type="text"
             name="username"
